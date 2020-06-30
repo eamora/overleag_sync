@@ -1,0 +1,21 @@
+\section{A keyword’s pairwise score}
+
+Let $ k_{i}>k_{j} $ denote that the number of incidents where the number of occurrences of $ k_{ j} $ is greater than that of $ k_{ i} $ in the messages associated with a SAC. The pairwise score of the keyword $ k_{ i} $ equals the following:
+\begin{equation*}
+	\left|\left\{k_{j} \in K_{S A C}: k_{i}>k_{j}\right\}\right|-\left|\left\{k_{j} \in K_{S A C}: k_{j}>k_{i}\right\}\right|
+\end{equation*}
+where $ K_{ SAC} $ is the set of keywords in the messages associated with the SAC.	
+
+To this end, the keyword $ k_{ i} $ will be assigned a dominance score
+$ S $, which is determined as follows. The dominance score of $ k_{ i} $
+($ S_{ki} $) is characterized as:
+\begin{equation}\label{eq:1}
+S_{ki}=N_{b}-N_{i}
+\end{equation}
+where $ N_{ b} $ is the number of times that $ k_{ i} $ has the highest occurrence among keywords in a set of messages and $ N_{ l} $ is the number of times that $ k_{ i} $ does not have the highest occurrence. 
+
+If we sum the dominance scores of all keywords, we find that the result is zero. The highest possible score is $ ( t - 1) $ and the lowest possible score is $ -( t - 1) $, where t is the number of keywords. Then, each of the candidate keywords is assigned a normalized score $ \bar{S} $. A candidate keyword is considered dominant, if its normalized score is greater than a threshold $ \beta $. As shown in Equation \eqref{eq:2}, $ \beta $ is a value that is less than the mean of the normalized dominance score by the standard error of the mean.
+
+\begin{equation}\label{eq:2}
+\beta=\frac{1-\sqrt{\sum_{\forall k_{j} \in K_{S A C}}\left(\overline{S}_{k_{j}}-\frac{1}{\left|K_{S A C}\right|}\right)^{2}}}{\left|K_{S_{A C}}\right|}
+\end{equation}
